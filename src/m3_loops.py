@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  FOR and WHILE loops.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Will Detterman.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -119,6 +119,14 @@ def run_test_practice_problem3():
                                     - math.sqrt(2) - 0.00000000001],
                                    big_list))
 
+    st.SimpleTestCase(practice_problem3,
+                      [-1, 23, 1],
+                      [286602]),
+
+    st.SimpleTestCase(practice_problem3,
+                      [0, 1, 1.414213562373],
+                      [286602]),
+
     # ------------------------------------------------------------------
     # Run the 14 tests in the   tests   list constructed above.
     # ------------------------------------------------------------------
@@ -208,7 +216,7 @@ def practice_problem3(start, n, threshold):
       :type threshold: float
     """
     ####################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ####################################################################
@@ -217,6 +225,19 @@ def practice_problem3(start, n, threshold):
     #    TIME ESTIMATE:   < 15 minutes.
     ####################################################################
 
+
+    list = []
+    num = start
+    while True:
+        if len(list) >= n:
+            return list
+            break
+        else:
+            if math.sin(num) + math.cos(num) >= threshold:
+                list.append(num)
+                num = num + 1
+            else:
+                num = num + 1
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
