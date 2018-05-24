@@ -5,8 +5,8 @@ This problem provides practice at:
   ***  LOOPS WITHIN LOOPS in 2D GRAPHICS problems.  ***
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Will Detterman.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ########################################################################
 # Students:
@@ -29,6 +29,7 @@ Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
 ########################################################################
 
 import rosegraphics as rg
+import math
 
 
 def main():
@@ -101,6 +102,41 @@ def hourglass(window, n, point, radius, color):
     #    DIFFICULTY:      8
     #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
     # ------------------------------------------------------------------
+
+    stpoint = rg.Point(point.x, point.y)
+    stpoint1 = rg.Point(point.x, point.y)
+    spacing = radius
+    hspacing = radius + radius*(2/3)
+    for i in range(n):
+
+        stpoint = rg.Point(stpoint.x - spacing, stpoint.y + hspacing)
+        dapoint = rg.Point(stpoint.x, stpoint.y)
+        for j in range(i):
+
+            circle = rg.Circle(dapoint, radius)
+            circle.fill_color = color
+            line = rg.Line(rg.Point(dapoint.x-radius, dapoint.y), rg.Point(dapoint.x+radius, dapoint.y))
+            circle.attach_to(window)
+            line.attach_to(window)
+            dapoint = rg.Point(dapoint.x + (2*radius), dapoint.y)
+
+    #stpoint = rg.Point(point.x, point.y)
+    #hspacing = radius + radius * (2 / 3)
+
+    for i in range(n):
+
+        stpoint1 = rg.Point(stpoint1.x - spacing, stpoint1.y - hspacing)
+        dapoint = rg.Point(stpoint1.x, stpoint1.y)
+        for j in range(i):
+            circle = rg.Circle(dapoint, radius)
+            circle.fill_color = color
+            line = rg.Line(rg.Point(dapoint.x - radius, dapoint.y), rg.Point(dapoint.x + radius, dapoint.y))
+            circle.attach_to(window)
+            line.attach_to(window)
+            dapoint = rg.Point(dapoint.x + (2 * radius), dapoint.y)
+
+    window.render()
+
 
 
 def run_test_many_hourglasses():
